@@ -11,8 +11,8 @@ Plugins:
 
 # Clone and build
 
-- `git clone https://github.com/SpeedyBlupi/pong.git`
-- `cd pong`
+- `git clone https://github.com/SpeedyBlupi/hackup-game2.git`
+- `cd hackup-game2`
 - `npm i`
 
 # Run in debug
