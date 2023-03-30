@@ -44,38 +44,22 @@ export default class Ball1 {
   step(device, elapsedTime, input) {
     this.absoluteTime += elapsedTime;
 
-    const distance = elapsedTime * this.speed;
-
     this.position = Point.rotatePointDeg(
       this.position,
-      this.direction,
-      new Point(this.position.x + distance, this.position.y)
+      this.direction
+      // TODO: new point?
     );
 
     // Collision avec la raquette.
     // TODO
 
-    const area = this._area;
-
     // Collision à droite ?
-    if (this.position.x > area.right) {
-      this.restart();
-    }
 
     // Collision à gauche ?
-    if (this.position.x < area.left) {
-      this.direction = 180 - this.direction;
-    }
 
     // Collision en bas ?
-    if (this.position.y > area.bottom) {
-      this.direction = -this.direction;
-    }
 
     // Collision en haut ?
-    if (this.position.y < area.top) {
-      this.direction = -this.direction;
-    }
   }
 
   draw(device, pixmap) {
