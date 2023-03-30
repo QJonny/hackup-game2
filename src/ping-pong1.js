@@ -10,29 +10,39 @@ import Racket from "./racket1";
 
 //------------------------------------------------------------------------
 
+const NO_BALLS = 2;
+
 export default class PingPong1 {
   constructor() {
     this.position = new Point(100, 100);
     this.direction = 30; // 30 deg
     this.radius = 20;
 
-    this.ball = new Ball();
+    this.balls = [];
     this.racket = new Racket();
 
-    this.ball.initialise();
+    for (let i = 0; i < NO_BALLS; i++) {
+      const ball = new Ball();
+      ball.initialise();
+      this.balls.push(ball);
+    }
     this.racket.initialise();
   }
 
   step(device, elapsedTime, input) {
     this.racket.step(device, elapsedTime, input);
 
-    this.ball.setRacketRect(this.racket.rect);
-
-    this.ball.step(device, elapsedTime, input);
+    for (let ball of this.balls) {
+      ball.setRacketRect(this.racket.rect);
+      ball.step(device, elapsedTime, input);
+    }
   }
 
   draw(device, pixmap) {
-    this.ball.draw(device, pixmap);
+    for (let ball of this.balls) {
+      ball.draw(device, pixmap);
+    }
+
     this.racket.draw(device, pixmap);
   }
 }
