@@ -114,6 +114,8 @@ export default class Ball1 {
   }
 
   tryHitRacket() {
+    const area = this._area;
+
     // Collision avec la raquette.
     if (
       this.position.y >= this.racketRect.top &&
