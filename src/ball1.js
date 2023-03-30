@@ -44,11 +44,11 @@ export default class Ball1 {
   step(device, elapsedTime, input) {
     this.absoluteTime += elapsedTime;
 
-    this.position = Point.rotatePointDeg(
+    /*this.position = Point.rotatePointDeg(
       this.position,
       this.direction
       // TODO: new point?
-    );
+    );*/
 
     // Collision avec la raquette.
     // TODO
