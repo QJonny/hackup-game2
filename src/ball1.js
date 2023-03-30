@@ -59,22 +59,34 @@ export default class Ball1 {
 
     // Collision à droite ?
     if (this.position.x > area.right) {
-      this.restart();
+      this.direction = 180 - this.direction;
+
+      const deltaPos = this.position.x - area.right;
+      this.position = new Point(this.position.x - deltaPos, this.position.y);
     }
 
     // Collision à gauche ?
     if (this.position.x < area.left) {
       this.direction = 180 - this.direction;
+
+      const deltaPos = area.left - this.position.x;
+      this.position = new Point(this.position.x + deltaPos, this.position.y);
     }
 
     // Collision en bas ?
     if (this.position.y > area.bottom) {
       this.direction = -this.direction;
+
+      const deltaPos = this.position.y - area.bottom;
+      this.position = new Point(this.position.x, this.position.y - deltaPos);
     }
 
     // Collision en haut ?
     if (this.position.y < area.top) {
       this.direction = -this.direction;
+
+      const deltaPos = area.top - this.position.y;
+      this.position = new Point(this.position.x, this.position.y + deltaPos);
     }
   }
 
